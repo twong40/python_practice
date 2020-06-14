@@ -9,7 +9,7 @@ class Appointment():
         self.timeframe = timeframe
     
     def __str__(self):
-        return(f"Meeting type: {self.meeting_type} , Patient: {self.patient}, Doctor: {self.doctor}, Time: {self.timeframe[0]}-{self.timeframe[1]}")
+        return(f"Meeting type: {self.meeting_type}, Patient: {self.patient}, Doctor: {self.doctor}, Time: {self.timeframe[0]}-{self.timeframe[1]}\n")
 
 class Patient():
     
@@ -33,9 +33,10 @@ class Patient():
             self.appointments.remove(appointment)
     
     def get_appointments(self):
-        print(f"Appointment list for Patient: {self.name}")
-        for app in self.appointments:
-            print(app)
+        app=""
+        for appointment in self.appointments:
+            app = app + str(appointment)
+        return(f"Appointment list for Patient: {self.name}\n{app}")
 
 class Doctor():
     def __init__(self, name = "Doctor"):
@@ -59,9 +60,10 @@ class Doctor():
             self.appointments.remove(appointment)
             
     def get_appointments(self):
-        print(f"Appointment list for Doctor: {self.name}")
-        for app in self.appointments:
-            print(app)
+        app = ""
+        for appointment in self.appointments:
+            app = app + str(appointment)
+        return(f"Appointment list for Doctor: {self.name}\n{app}")
 
 class Schedule():
     
@@ -81,9 +83,10 @@ class Schedule():
             appointment.doctor.cancel_appointment(appointment)
             self.sched.remove(appointment)
     def get_appointments(self):
-        print("List of appoints in the schedule: ")
-        for app in self.sched:
-            print(app)
+        app = ""
+        for appointment in self.sched:
+                app = app + str(appointment)
+        return(f"Appointment list for Today:\n{app}")
             
     def check_sched(self, timeframe):
         for app in self.sched:
